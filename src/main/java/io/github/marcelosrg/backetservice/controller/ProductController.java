@@ -24,10 +24,10 @@ public class ProductController {
       return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PlatziProductResponse> getProductById(@PathVariable Long id) {
+    @GetMapping("/{productId}")
+    public ResponseEntity<PlatziProductResponse> getProductById(@PathVariable Long productId) {
 
 
-        return ResponseEntity.ok(productService.getProductById(id));
+        return ResponseEntity.ok(productService.getProductById(productId));
     }
 }

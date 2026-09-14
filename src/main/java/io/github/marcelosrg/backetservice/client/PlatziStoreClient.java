@@ -13,7 +13,7 @@ public interface PlatziStoreClient {
     @GetMapping("/products")
     List<PlatziProductResponse> getAllProducts();
 
-    @GetMapping("/products/{id}")
-    PlatziProductResponse getProductById(@PathVariable Long id);
+    @GetMapping("/products/{productId}")
+    PlatziProductResponse getProductById(@PathVariable Long productId);
 
 }
