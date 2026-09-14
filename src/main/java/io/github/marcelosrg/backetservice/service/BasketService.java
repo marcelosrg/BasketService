@@ -22,9 +22,10 @@ public class BasketService {
     }
     public Basket createBasket(BasketRequest basketRequest) {
 
-
-
-
+        basketRepository.findByClientAndStatus(basketRequest.clientId(), Status.OPEN)
+                .ifPresent(status -> {
+                    throw new IllegalStateException("Basket already exists");
+                });
 
         List<Product> products = new ArrayList<>();
         basketRequest.products().forEach(productRequest -> {
