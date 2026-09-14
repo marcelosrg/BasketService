@@ -10,6 +10,7 @@ import java.util.List;
 
 @Slf4j
 @Service
+
 public class ProductService {
 
     private final PlatziStoreClient platziStoreClient;
