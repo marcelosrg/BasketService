@@ -1,4 +1,4 @@
-package io.github.marcelosrg.backetservice.client.response;
+package io.github.marcelosrg.backetservice.dto.product.response;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

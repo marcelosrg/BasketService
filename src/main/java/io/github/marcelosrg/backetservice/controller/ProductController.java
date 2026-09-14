@@ -1,12 +1,11 @@
 package io.github.marcelosrg.backetservice.controller;
 
-import io.github.marcelosrg.backetservice.client.response.PlatziProductResponse;
+import io.github.marcelosrg.backetservice.dto.product.response.PlatziProductResponse;
 import io.github.marcelosrg.backetservice.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")

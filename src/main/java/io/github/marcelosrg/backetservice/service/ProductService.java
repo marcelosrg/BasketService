@@ -1,7 +1,7 @@
 package io.github.marcelosrg.backetservice.service;
 
 import io.github.marcelosrg.backetservice.client.PlatziStoreClient;
-import io.github.marcelosrg.backetservice.client.response.PlatziProductResponse;
+import io.github.marcelosrg.backetservice.dto.product.response.PlatziProductResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
