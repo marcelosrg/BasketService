@@ -4,9 +4,7 @@ spring:
 
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: basket-service
+      uri: mongodb://localhost:27017/basket-service
     redis:
       host: localhost
       port: 6379

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collation = "basket")
+@Document(collection = "basket")
 public class Basket {
 
     @Id
