@@ -28,6 +28,8 @@ public class Basket {
 
     private Status status;
 
+    private PaymentMethod paymentMethod;
+
 
     public void calculateTotalPrice(){
         this.totalPrice = products.stream()
