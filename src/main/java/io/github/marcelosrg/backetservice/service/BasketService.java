@@ -90,11 +90,11 @@ public class BasketService {
     }
 
     public void deleteBasket(String basketId) {
-        getBasket(basketId);
+        verifyExist(basketId);
         basketRepository.deleteById(basketId);
     }
 
-    private Basket getBasket(String basketId) {
+    private Basket verifyExist(String basketId) {
         return basketRepository.findById(basketId).orElseThrow(() -> new NotFoundException("Basket not found"));
     }
 
