@@ -6,6 +6,7 @@ import io.github.marcelosrg.backetservice.dto.product.response.PlatziProductResp
 import io.github.marcelosrg.backetservice.entity.Basket;
 import io.github.marcelosrg.backetservice.entity.Product;
 import io.github.marcelosrg.backetservice.entity.Status;
+import io.github.marcelosrg.backetservice.exception.NotFoundException;
 import io.github.marcelosrg.backetservice.repository.BasketRepository;
 import org.springframework.stereotype.Service;
 
@@ -82,7 +83,33 @@ public class BasketService {
 
     public Basket payBasket (String id, PaymentRequest paymentRequest) {
         Basket basket = basketRepository.findById(id).orElseThrow( () -> new IllegalStateException("Basket not found"));
-        basket.setPaymentMethod(paymentRequest.);
+        basket.setPaymentMethod(paymentRequest.paymentMethod());
+        basket.setStatus(Status.SOLD);
+        return basketRepository.save(basket);
 
+    }
+
+    public void deleteBasket(String basketId) {
+        getBasket(basketId);
+        basketRepository.deleteById(basketId);
+    }
+
+    private Basket getBasket(String basketId) {
+        return basketRepository.findById(basketId).orElseThrow(() -> new NotFoundException("Basket not found"));
+    }
+
+    private List<Product> manageProductsRequest(BasketRequest basketRequest) {
+        List<Product> products = new ArrayList<>();
+        basketRequest.products().forEach(productRequest -> {
+            PlatziProductResponse platziProductReponse = productService.getProductById(productRequest.id());
+            products.add(Product.builder()
+                    .id(platziProductReponse.id())
+                    .price(platziProductReponse.price())
+                    .title(platziProductReponse.title())
+                    .quantity(productRequest.quantity())
+                    .build());
+
+        });
+        return products;
     }
 }
