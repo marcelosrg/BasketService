@@ -1,6 +1,7 @@
 package io.github.marcelosrg.backetservice.service;
 
 import io.github.marcelosrg.backetservice.dto.basket.request.BasketRequest;
+import io.github.marcelosrg.backetservice.dto.payment.PaymentRequest;
 import io.github.marcelosrg.backetservice.dto.product.response.PlatziProductResponse;
 import io.github.marcelosrg.backetservice.entity.Basket;
 import io.github.marcelosrg.backetservice.entity.Product;
@@ -76,6 +77,12 @@ public class BasketService {
         basket.setProducts(products);
         basket.calculateTotalPrice();
         return basketRepository.save(basket);
+
+    }
+
+    public Basket payBasket (String id, PaymentRequest paymentRequest) {
+        Basket basket = basketRepository.findById(id).orElseThrow( () -> new IllegalStateException("Basket not found"));
+        basket.setPaymentMethod(paymentRequest.);
 
     }
 }

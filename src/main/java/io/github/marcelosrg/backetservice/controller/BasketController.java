@@ -2,6 +2,7 @@ package io.github.marcelosrg.backetservice.controller;
 
 import feign.Response;
 import io.github.marcelosrg.backetservice.dto.basket.request.BasketRequest;
+import io.github.marcelosrg.backetservice.dto.payment.PaymentRequest;
 import io.github.marcelosrg.backetservice.entity.Basket;
 import io.github.marcelosrg.backetservice.service.BasketService;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,12 @@ public class BasketController {
     @PutMapping("/{id}")
     public ResponseEntity<Basket> updateBasket(@PathVariable String id, @RequestBody BasketRequest basketRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(basketService.updateBasket(id, basketRequest));
+
+    }
+
+    @PutMapping("/{id}/payment")
+    public ResponseEntity<Basket> payBasket(@PathVariable String id, @RequestBody PaymentRequest paymentRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(basketService.payBasket(id, paymentRequest));
 
     }
 }
